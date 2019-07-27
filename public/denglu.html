@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 设置视口-->
+    <meta neme="viewport" content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <!-- 导入3个js-->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+
+        /*不同页面大小进行调整*/
+        @media screen and (min-width:992px){
+            /*最外层父元素*/
+            #fa{
+                width: 100%;
+                height: 600px;
+                margin:auto;
+                border: 1px solid #aaa;
+                text-align: center;
+                padding:0 4%;
+                /*line-height: 600px;*/
+            }
+            /*图片外包裹的div*/
+            .img{
+                padding-top:10%
+            }
+            /*文字外包裹的div*/
+            .text{
+                padding-top: 4%;
+
+            }
+        }
+
+        @media screen and (max-width:991px){
+            #fa{
+                width: 100%;
+                height: 1000px;
+                margin:auto;
+                border: 1px solid #aaa;
+                text-align: center;
+                padding-right: 10%;
+                /*line-height: 600px;*/
+            }
+
+        }
+
+        @media screen and (max-width:778px){
+            /*图片*/
+            .img img{
+                width:100%;
+            }
+        }
+
+        /*顶部登录注册*/
+        .ding a{
+            color: #FFC107;
+            text-decoration: none;
+        }
+
+        /*右侧文字之间上下间距*/
+        .row > div{
+            margin-top:10px;
+        }
+
+        /*美食行菜谱网*/
+        .top{
+            font-weight: 900;
+            color: #2d2d2d;
+            font-size: 24px;
+        }
+
+        /*左侧图片*/
+        .img{
+            padding-top:10%
+        }
+
+        /*右侧文字*/
+        .text{
+            padding-top: 4%;
+        }
+
+        /*下方的*/
+        .bottom{
+            /*padding: 5%;*/
+            border-top: 1px solid #dcdcdc;
+            color: #989898;
+            font-size: 12px;
+            background: #fff;
+            font-family: "microsoft yahei";
+            padding-top: 6%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--最外层div-->
+        <p class="float-right mt-5 ding">
+            <a href="">没有账号?</a>
+            <a href="">点此注册</a>
+        </p>
+        <div class="row" id="fa">
+
+            <!--左侧图片-->
+            <div class="col-lg-6 col-sm-12 img">
+                <img src="img/login-bg.png" alt=""/>
+            </div>
+
+            <!--右侧为文字-->
+            <div class="col-lg-6 col-sm-12 text">
+                <p class="top">美食网</p>
+								<form action="/denglu" method="get">
+									<div class="row">
+										<!--账号-->
+										<div class="col-3"></div>
+                    <div class="col-9">
+                        <input onblur="show()" id="uname" onfocus="uname_f()" type="text" class="w-100" placeholder="登录账号" name="fname"/>
+                        <p id="p1" class="m-0"></p>
+                    </div>
+
+                    <!--密码-->
+										<div class="col-3"></div>
+                    <div class="col-9">
+                        <input type="text" class="w-100"  name="fpwd" placeholder="请输入密码"/>
+                        <p id="p3" class="m-0"></p>
+                    </div>
+                    <!--登录-->
+                    <div class="col-3"></div>
+                    <div class="col-9">
+											<!-- <input type="submit"> -->
+                        <button class="btn btn-warning w-100" >登录</button>
+                    </div>
+									
+									</div>
+								</form>
+            </div>
+
+            <!--最下方-->
+            <div class="col-12 bottom">
+                Copyright 2010-2017 All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;辽ICP备11005707号-1
+            </div>
+        </div>
+    </div>
+    <script>
+        function show(){
+            //非空验证
+            if(uname.value==""){
+                p1.innerHTML="您输入的用户名为空";
+            }else{
+                p1.innerHTML="";
+            }
+        }
+        function uname_f(){
+            //显示输入条件
+            p1.innerHTML="用户为6~12位数字和字母组成";
+        }
+    </script>
+</body>
+</html>

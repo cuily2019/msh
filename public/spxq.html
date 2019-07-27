@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 设置视口-->
+    <meta neme="viewport" content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <!-- 导入3个js-->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .title{
+            font-size:22px;
+            margin-bottom:15px;
+            margin-top: 7%;
+        }
+        .img-star{
+            margin-bottom: 5%;
+        }
+        .bg{
+            background-color: #f5f5f5;
+            margin-bottom: 5%;
+        }
+        body{
+            background-color: #fff;
+        }
+        .zl{
+            font-size: 24px;
+            border-bottom: 1px solid #ccc;
+        }
+        .zl_1{
+            font-size: 24px;
+        }
+        .table_1{
+            border-bottom: 1px solid #ccc;
+        }
+        .num{
+            font-size: 30px;
+            font-weight: bold;
+            color: #f6a200;
+            margin-top: 4%;
+            margin-bottom: 1%
+        }
+        .text{
+            color: #666;
+            font-size: 18px;
+        }
+        .sb{
+            width: 100%;
+            text-align: center;
+            padding: 3%;
+            margin-top: 5%;
+            background-color:#F3F3F3;
+            color: #2D2D2D;
+            font-size: 15px;
+        
+        }
+        .f-s{
+            font-size: 16px;
+        }
+        .f-s+span{
+            font-size: 15px;
+        }
+        .xb{
+            width: 100%;
+            padding: 1%;
+            background-color:#DDDDDD;
+            color: #B7ADAD;
+            text-align: center;
+        
+        }
+        #img_top>img{
+            width: 100%;
+            height: 300px;
+        }
+        .color-time{
+            color: #f6a200
+        }
+        .img_bottom>img{
+            width: 218px;
+            height: 163px;
+        }
+    </style>
+</head>
+<body onload="show()">
+    <div class="container">
+        <div class="row bg">
+            <div class="col-lg-4 col-md-4 col-sm-12" id="img_top">
+                
+            </div>
+            <div  class="col-lg-2 col-md-2 col-sm-12"></div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="title" id="title"></div>
+                <div class="img-star">
+                        <span class="mr-2">难度</span>
+                        <span id="img_star">
+                            <img src="img/star-off.png" alt=""/>
+                            <img src="img/star-off.png" alt=""/>
+                            <img src="img/star-off.png" alt=""/>
+                            <img src="img/star-off.png" alt=""/>
+                            <img src="img/star-off.png" alt=""/>
+                        </span>
+                        
+                        <span class="ml-5">0人收藏</span>
+                        <span class="float-right pr-1" id="time"></span>
+                </div>
+                <div id="content"></div>
+            </div>
+        </div>
+        <div>
+            <div class="zl pb-3">
+                主料明细:
+            </div>
+            <table class="mt-3 table_1 mb-5" id="table_main_1">
+                
+            </table>
+            <div class="zl pb-3">
+                调料明细:
+            </div>
+            <table class="mt-3 table_1 mb-5" id="table_main_2">
+                
+            </table>
+            <div class="zl_1 pb-3 mb-5 pl-0">
+                做法步骤:
+            </div>
+            <div class="row" id="doit">
+               
+            </div>
+            <div class="zl_1 pb-3 pl-0">
+                小窍门:
+            </div>
+            <div class="pl-5 pb-5" id="last_text"></div>        
+        </div>
+    </div>
+    <!--底部-->
+    <div class="sb">
+        <span class="f-s">友情链接&nbsp;：</span>
+        <span>四川政府采购&nbsp;&nbsp;&nbsp;苏州车管所&nbsp;&nbsp;&nbsp;辽宁造价信息网&nbsp;&nbsp;&nbsp;南京教育信息网&nbsp;&nbsp;&nbsp;中国站长网&nbsp;&nbsp;&nbsp;南京市卫生局&nbsp;&nbsp;&nbsp;大达物流&nbsp;&nbsp;&nbsp;99770漫画</span>
+        <p>
+            <a href="*">关于美食行&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">服务条款&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">加入我们&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">商家合作&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">注册会员&nbsp;&nbsp;&nbsp;</a>
+        </p>
+    </div>
+
+    <!--更底部-->
+    <div class="xb">
+        Copyright 2010-2017 All Rights Reserved.&nbsp;&nbsp;&nbsp;辽ICP备11005707号-1
+    </div>
+<script>
+    function show(){
+        //1.创建xhr异步对象
+        var urlParams=new URLSearchParams(location.search);
+        var f_fid=urlParams.get("id");
+        var xhr=new XMLHttpRequest();
+        //4.监听端口
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                var result=xhr.responseText;
+                var arr=JSON.parse(result);
+                arr=arr[0]
+                console.log(arr)
+                title.innerHTML=arr.ftitle;
+                img_top.innerHTML=`<img src="img/${arr.fimg}"/>`;
+                time.innerHTML=`烹饪时间< <span class="color-time">${arr.time}</span>`;
+                content.innerHTML=arr.content;
+                last_text.innerHTML=arr.last_text
+                
+                if(arr.star==0){
+                    img_star.innerHTML=`
+                        
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        
+                    `
+                }else if(arr.star==1){
+                    img_star.innerHTML=`
+                       
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        
+                    `
+                }else if(arr.star==2){
+                    img_star.innerHTML=`
+                        
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                       
+                    `
+                }else if(arr.star==3){
+                    img_star.innerHTML=`
+                       
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                       
+                    `
+                }else if(arr.star==4){
+                    img_star.innerHTML=`
+                       
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-off.png" alt=""/>
+                       
+                    `
+                }else if(arr.star==5){
+                    img_star.innerHTML=`
+                      
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                        <img src="img/star-on.png" alt=""/>
+                       
+                    `
+                }
+
+
+
+                if(arr.main_1==null){
+                    table_main_1.innerHTML=``
+                }else if(arr.main_2==null){
+                    table_main_1.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.main_1}</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.main_num_1}</td>
+                        </tr>
+                    `
+                }else if(arr.main_3==null){
+                    table_main_1.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.main_1}</td>
+                            <td class="pr-5">${arr.main_2}</td>    
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.main_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.main_num_2}</td>
+                        </tr>
+                    `
+                }else if(arr.main_4==null){
+                    table_main_1.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.main_1}</td>
+                            <td class="pr-5">${arr.main_2}</td>
+                            <td class="pr-5">${arr.main_3}</td>  
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.main_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.main_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.main_num_3}</td>
+                        </tr>
+                    `
+                }else if(arr.main_5==null){
+                    table_main_1.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.main_1}</td>
+                            <td class="pr-5">${arr.main_2}</td>
+                            <td class="pr-5">${arr.main_3}</td>
+                            <td class="pr-5">${arr.main_4}</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.main_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.main_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.main_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.main_num_4}</td>
+                        </tr>
+                    `
+                }else{
+                    table_main_1.innerHTML=`
+                    <tr>
+                        <td class="pr-5">${arr.main_1}</td>
+                        <td class="pr-5">${arr.main_2}</td>
+                        <td class="pr-5">${arr.main_3}</td>
+                        <td class="pr-5">${arr.main_4}</td>
+                        <td class="pr-5">${arr.main_5}</td>
+                    </tr>
+                    <tr>
+                        <td class="pr-5 pb-3">${arr.main_num_1}</td>
+                        <td class="pr-5 pb-3">${arr.main_num_2}</td>
+                        <td class="pr-5 pb-3">${arr.main_num_3}</td>
+                        <td class="pr-5 pb-3">${arr.main_num_4}</td>
+                        <td class="pr-5 pb-3">${arr.main_num_5}</td>
+                    </tr>
+                `
+                }
+
+                if(arr.seasoning_1==null){
+                    table_main_2.innerHTML=``
+                }else if(arr.seasoning_2==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            
+                        </tr>
+                    `
+                }else if(arr.seasoning_3==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                           
+                        </tr>
+                    `
+                }else if(arr.seasoning_4==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            
+                        </tr>
+                    `
+                }else if(arr.seasoning_5==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                           
+                        </tr>
+                    `
+                }else if(arr.seasoning_6==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            <td class="pr-5">${arr.seasoning_5}</td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_5}</td>
+                            
+                        </tr>
+                    `
+                }else if(arr.seasoning_7==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            <td class="pr-5">${arr.seasoning_5}</td>
+                            <td class="pr-5">${arr.seasoning_6}</td> 
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_5}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_6}</td>
+                        </tr>
+                    `
+                }else if(arr.seasoning_8==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            <td class="pr-5">${arr.seasoning_5}</td>
+                            <td class="pr-5">${arr.seasoning_6}</td>
+                            <td class="pr-5">${arr.seasoning_7}</td>    
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_5}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_6}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_7}</td>
+                        </tr>
+                    `
+                }else if(arr.seasoning_9==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            <td class="pr-5">${arr.seasoning_5}</td>
+                            <td class="pr-5">${arr.seasoning_6}</td>
+                            <td class="pr-5">${arr.seasoning_7}</td>
+                            <td class="pr-5">${arr.seasoning_8}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_5}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_6}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_7}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_8}</td>
+                        </tr>
+                    `
+                }else if(arr.seasoning_10==null){
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            <td class="pr-5">${arr.seasoning_5}</td>
+                            <td class="pr-5">${arr.seasoning_6}</td>
+                            <td class="pr-5">${arr.seasoning_7}</td>
+                            <td class="pr-5">${arr.seasoning_8}</td>
+                            <td class="pr-5">${arr.seasoning_9}</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_5}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_6}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_7}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_8}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_9}</td>
+                        </tr>
+                    `
+                }else{
+                    table_main_2.innerHTML=`
+                        <tr>
+                            <td class="pr-5">${arr.seasoning_1}</td>
+                            <td class="pr-5">${arr.seasoning_2}</td>
+                            <td class="pr-5">${arr.seasoning_3}</td>
+                            <td class="pr-5">${arr.seasoning_4}</td>
+                            <td class="pr-5">${arr.seasoning_5}</td>
+                            <td class="pr-5">${arr.seasoning_6}</td>
+                            <td class="pr-5">${arr.seasoning_7}</td>
+                            <td class="pr-5">${arr.seasoning_8}</td>
+                            <td class="pr-5">${arr.seasoning_9}</td>
+                            <td class="pr-5">${arr.seasoning_10}</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_1}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_2}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_3}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_4}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_5}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_6}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_7}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_8}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_9}</td>
+                            <td class="pr-5 pb-3">${arr.seasoning_num_10}</td>
+                        </tr>
+                    `
+                }
+
+
+                if(arr.do_3==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>`
+                }else if(arr.do_4==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>`
+                }else if(arr.do_5==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>
+        
+                        <!--第四步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_4}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">4</div>
+                            <div class="text">${arr.do_4}</div>
+                        </div>`
+                }else if(arr.do_6==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>
+        
+                        <!--第四步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_4}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">4</div>
+                            <div class="text">${arr.do_4}</div>
+                        </div>
+        
+                        <!--第五步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_5}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">5</div>
+                            <div class="text">${arr.do_5}</div>
+                        </div>`
+                }else if(arr.do_7==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>
+        
+                        <!--第四步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_4}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">4</div>
+                            <div class="text">${arr.do_4}</div>
+                        </div>
+        
+                        <!--第五步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_5}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">5</div>
+                            <div class="text">${arr.do_5}</div>
+                        </div>
+        
+                        <!--第六步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_6}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">6</div>
+                            <div class="text">${arr.do_6}</div>
+                        </div>`
+                }else if(arr.do_8==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>
+        
+                        <!--第四步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_4}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">4</div>
+                            <div class="text">${arr.do_4}</div>
+                        </div>
+        
+                        <!--第五步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_5}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">5</div>
+                            <div class="text">${arr.do_5}</div>
+                        </div>
+        
+                        <!--第六步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_6}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">6</div>
+                            <div class="text">${arr.do_6}</div>
+                        </div>
+        
+                        <!--第七步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_7}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">7</div>
+                            <div class="text">${arr.do_7}</div>
+                        </div>`
+                }else if(arr.do_9==null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>
+        
+                        <!--第四步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_4}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">4</div>
+                            <div class="text">${arr.do_4}</div>
+                        </div>
+        
+                        <!--第五步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_5}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">5</div>
+                            <div class="text">${arr.do_5}</div>
+                        </div>
+        
+                        <!--第六步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_6}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">6</div>
+                            <div class="text">${arr.do_6}</div>
+                        </div>
+        
+                        <!--第七步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_7}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">7</div>
+                            <div class="text">${arr.do_7}</div>
+                        </div>
+        
+                        <!--第八步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_8}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">8</div>
+                            <div class="text">${arr.do_8}</div>
+                        </div>`
+                }else if(arr.do_9!=null){
+                    doit.innerHTML+=`
+                        <!--第一步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_1}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">1</div>
+                            <div class="text">${arr.do_1}</div>
+                        </div>
+        
+                        <!--第二步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_2}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">2</div>
+                            <div class="text">${arr.do_2}</div>
+                        </div>
+        
+                        <!--第三步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_3}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">3</div>
+                            <div class="text">${arr.do_3}</div>
+                        </div>
+        
+                        <!--第四步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_4}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">4</div>
+                            <div class="text">${arr.do_4}</div>
+                        </div>
+        
+                        <!--第五步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_5}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">5</div>
+                            <div class="text">${arr.do_5}</div>
+                        </div>
+        
+                        <!--第六步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_6}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">6</div>
+                            <div class="text">${arr.do_6}</div>
+                        </div>
+        
+                        <!--第七步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_7}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">7</div>
+                            <div class="text">${arr.do_7}</div>
+                        </div>
+        
+                        <!--第八步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_8}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">8</div>
+                            <div class="text">${arr.do_8}</div>
+                        </div>
+                        
+                        <!--第九步-->
+                        <div class="col-lg-3 mb-5 img_bottom">
+                            <img src="img/${arr.img_9}">
+                        </div>
+                        <div class="col-lg-9 mb-5">
+                            <div class="num">8</div>
+                            <div class="text">${arr.do_9}</div>
+                        </div>`
+                }
+
+                if(arr.star==0){
+                    img_star.innerHTML=`
+                    
+                    `
+                }
+            }
+        }
+        //2.打开链接
+        xhr.open("get","http://127.0.0.1:8080/query?id="+f_fid,true)
+        //3.发送请求
+        xhr.send(null)
+    }
+    
+</script>
+</body>
+</html>

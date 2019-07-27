@@ -1,0 +1,17 @@
+.img-1{
+    display:block;
+    margin-top:-130px;
+    margin-left:23px;
+    position: absolute;
+}
+.img-2{
+    display:block;
+    margin-top:-38px;
+    margin-left:0px;
+    position: absolute;
+}
+.image-1{
+    width: 206px;
+    height:46px;
+    overflow:hidden;
+}

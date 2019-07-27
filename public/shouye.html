@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/index.css"/>
+</head>
+<body onload="show()">
+<header>
+    <iframe src="header.html" frameborder="0" class="my_header"></iframe>
+</header>
+    <div class="container">
+
+        <!--搜索框 和 logo-->
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="ssk float-left col-9">
+
+                <!--前方下拉菜单-->
+                <select name="provs" class="hmxl float-left">
+                    <option  selected>菜谱</option><!--0-->
+                    <option>专题</option><!--1-->
+                    <option>圈子</option>
+                    <option>活动</option>
+                </select>
+                <!--输入框-->
+
+                <input type="text" placeholder="请输入您要搜索的内容" class="float-left ml-0 w-50 form-control p-1 my_small input" />
+                <!--搜索图片-->
+
+                <a href="#" class="ml-0 float-left">
+                    <img src="../img/search.png"/>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!--轮播图片上方导航栏-->
+        <div class="row mar">
+            <div class="navbar navbar-expand-sm bg-dark navbar-dark col-12 p-0 pl-3 pr-3 ">
+                <!--1.最前面不隐藏菜单项-->
+                <a href="" class="navbar-brand">首页</a>
+                <!--2.在小屏幕下出现的按钮，按钮上有三条线，折叠的激发按钮-->
+                <button data-toggle="collapse" data-target="#content" class="navbar-toggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--3.导航栏里的菜单项，小屏幕以上横向,小屏幕以下纵向显示-->
+                <!--折叠的内容-->
+                <div id="content" class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"  id="xl">
+                            <a href="" class="nav-link">菜谱大全</a>
+                            <p class="sj"></p>
+                            <ul>
+                                <li class="color-f">家常菜谱
+                                    <ul>
+                                        <li><a href="*">快手菜</a></li>
+                                        <li><a href="*">凉菜</a></li>
+                                        <li><a href="*">早餐</a></li>
+                                        <li><a href="*">糕点小吃</a></li>
+                                        <li><a href="*">甜品点心</a></li>
+                                        <li><a href="*">晚餐</a></li>
+                                        <li><a href="*">素食</a></li>
+                                        <li><a href="*">私家菜</a></li>
+                                        <li><a href="*">饮品</a></li>
+                                    </ul>
+                                </li>
+                                <li class="color-f">中华菜谱
+                                    <ul>
+                                        <li><a href="*">京菜</a></li>
+                                        <li><a href="*">川菜</a></li>
+                                        <li><a href="*">徽菜</a></li>
+                                        <li><a href="*">粤菜</a></li>
+                                        <li><a href="*">湘菜</a></li>
+                                        <li><a href="*">清蒸菜</a></li>
+                                        <li><a href="*">沪菜</a></li>
+                                        <li><a href="*">浙菜</a></li>
+                                        <li><a href="*">鄂菜</a></li>
+                                        <li><a href="*">鲁菜</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="color-f">烘培糕点
+                                    <ul>
+                                        <li><a href="*">面包</a></li>
+                                        <li><a href="*">蛋糕</a></li>
+                                        <li><a href="*">土司</a></li>
+                                        <li><a href="*">饼干</a></li>
+                                        <li><a href="*">月饼</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item pl">
+                            <a href="" class="nav-link">美食专题</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">食材大全</a>
+                        </li>
+                        <li class="nav-item" id="xl3">
+                            <a href="" class="nav-link">外国料理</a>
+                            <p class="sj"></p>
+                            <ul class="color-ff">
+                                <li><a href="*">韩国料理</a></li>
+                                <li><a href="*">日本料理</a></li>
+                                <li><a href="*">法国大餐</a></li>
+                                <li><a href="*">意大利美食</a></li>
+                                <li><a href="*">异国料理</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item pl" id="xl2">
+                            <a href="" class="nav-link">厨房百科</a>
+                            <p class="sj"></p>
+                            <ul class="color-ff">
+                                <li><a href="*">烹饪技巧</a></li>
+                                <li><a href="*">食材加工</a></li>
+                                <li><a href="*">厨具选购</a></li>
+                                <li><a href="*">美食DIY</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--上方轮播图片-->
+        <div class="row">
+            <div class="col-12 p-2">
+
+                <div id="demo" class="carousel" data-ride="carousel">
+                    <!--1.轮播图片-->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="*">
+                                <img class="lb-img" src="../img/20170907164502540.jpg"/>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="*">
+                                <img class="lb-img" src="../img/20170913110837531.jpg"/>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="*">
+                                <img class="lb-img" src="../img/20170916130019629.png"/>
+                            </a>
+                        </div>
+                    </div>
+                    <!--2.左右箭头-->
+                    <a data-slide="next" href="#demo" class="carousel-control-next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <a data-slide="prev" href="#demo" class="carousel-control-prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <!--3.轮播指示符-->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--一楼-->
+        <!--精品菜谱-->
+        <div class="h-50 m-4">
+            <span class="jpcp-1">精品菜谱 </span>
+            <span class="jpcp-2"> 精选的人气菜谱，你值得拥有</span>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="#tab3" class="nav-link jpcp-3" data-toggle="pill">今日</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tab2" class="nav-link jpcp-3" data-toggle="pill">本周</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tab1" class="nav-link active jpcp-3" data-toggle="pill">本月</a>
+                </li>
+            </ul>
+        </div>
+        <!--胶囊导航-->
+        <div class="tab-content">
+            <!--胶囊导航第一个-->
+
+            <!--本月-->
+            <div class="tab-pane active" id="tab1">
+                <div class="row" id="jpcpby">
+
+                    <!--第一行图片-->
+                    <!-- 从数据库中调取数据循环到此处 -->
+                    <!-- 对应下方本月循环 -->
+                    
+                </div>
+            </div>
+
+            <!--胶囊导航第二部分-->
+
+            <!--本周-->
+            <div class="tab-pane" id="tab2">
+                <div class="row" id="jpcpbz">
+                    <!--第一行图片-->
+                    <!-- 从数据库中调取数据循环到此处 -->
+                    <!-- 对应下方本周循环 -->
+                    
+                </div>
+            </div>
+            <!--胶囊导航第三部分-->
+
+            <!--今日-->
+            <div class="tab-pane" id="tab3">
+                <div class="row" id="jpcpjr">
+                    <!--第一行图片-->
+                    <!-- 从数据库中调取数据循环到此处 -->
+                    <!-- 对应下方今日循环 -->
+                    <a href=""></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!--二楼-->
+        <!--时令蔬菜-->
+        <div class="h-50 m-4">
+            <span class="jpcp-1">时令蔬菜 </span>
+            <span class="jpcp-2"> 根据时令蔬菜，做健康美食</span>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="#tab7" class="nav-link jpcp-3" data-toggle="pill">蔬菜</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tab6" class="nav-link jpcp-3" data-toggle="pill">水果</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tab5" class="nav-link jpcp-3" data-toggle="pill">谷物</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tab4" class="nav-link active jpcp-3" data-toggle="pill">生鲜</a>
+                </li>
+            </ul>
+        </div>
+        <!--胶囊导航-->
+        <div class="tab-content">
+            <!--胶囊导航第一个-->
+
+            <!--生鲜-->
+            <div class="tab-pane active" id="tab4">
+                <div class="row">
+                    <!--第一行图片-->
+                    <!--鲟鱼-->
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171015103823623.jpg" />
+                        <p class="pl-1 slsc-1">鲟鱼</p>
+                        <p>鲟鱼是世界上现有鱼类中体形最大、寿命最长...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171015125537471.jpg" />
+                        <p class="pl-1 slsc-1">鲍鱼</p>
+                        <p>鲍鱼是一种原始的海洋贝类，软体动物门，腹...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171014150123923.jpg" />
+                        <p class="pl-1 slsc-1">丁香鱼</p>
+                        <p>丁香鱼，也叫“小银鱼”，产自东海深海水域...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171015125121384.jpg" />
+                        <p class="pl-1 slsc-1">文蛤</p>
+                        <p>文蛤主要产于沿海一带，其经济价值高、营养...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171014175628329.jpg" />
+                        <p class="pl-1 slsc-1">黑鱼</p>
+                        <p>黑鱼是淡水鱼，生性凶猛，能吃掉某个湖泊或...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171013182235445.jpg" />
+                        <p class="pl-1 slsc-1">基围虾</p>
+                        <p>基围虾，体长8cm左右。体表有许多凹陷部...</p>
+                    </div>
+                </div>
+            </div>
+            <!--胶囊导航第二个-->
+
+            <!--谷物-->
+            <div class="tab-pane" id="tab5">
+                <div class="row">
+                    <!--第一行图片-->
+                    <!--米线-->
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171011191926699.jpg" />
+                        <p class="pl-1 slsc-1">米线</p>
+                        <p>粉丝是中国常见的食品之一，往往又叫做粉条...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171011161712449.jpg" />
+                        <p class="pl-1 slsc-1">紫米</p>
+                        <p>紫米是水稻的一个品种，属于糯米类，仅四川...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171011190209178.jpg" />
+                        <p class="pl-1 slsc-1">粉丝</p>
+                        <p>米线是一种加工食品，又名米粉、米丝或米面...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171011163944747.jpg" />
+                        <p class="pl-1 slsc-1">大麦</p>
+                        <p>大麦具坚果香味，碳水化合物含量较高，蛋白...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171011164325153.jpg" />
+                        <p class="pl-1 slsc-1">荞麦</p>
+                        <p>荞麦，一年生草本。茎直立，高30-90厘...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171011140545651.jpg" />
+                        <p class="pl-1 slsc-1">年糕</p>
+                        <p>年糕的种类很多，具有代表性的有北方的白糕...</p>
+                    </div>
+                </div>
+            </div>
+            <!--胶囊导航第三个-->
+
+            <!--水果-->
+            <div class="tab-pane" id="tab6">
+                <div class="row">
+                    <!--第一行图片-->
+                    <!--米线-->
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171016133443697.jpg" />
+                        <p class="pl-1 slsc-1">黑枣</p>
+                        <p>黑枣产各地山区，野生于山坡、谷地或栽培；...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171015164031916.jpg" />
+                        <p class="pl-1 slsc-1">草莓</p>
+                        <p>草莓是蔷薇科植物草莓的果实。原产南美、欧...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171015174852634.jpg" />
+                        <p class="pl-1 slsc-1">杨梅</p>
+                        <p>杨梅是杨梅科杨梅属常绿乔木的果实，又称圣...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171015165643790.jpg" />
+                        <p class="pl-1 slsc-1">西瓜</p>
+                        <p>西瓜为葫芦科植物西瓜的果实。我国南北皆有...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171016151921515.jpg" />
+                        <p class="pl-1 slsc-1">菊花</p>
+                        <p>菊花是一种植物也是一味中药材。在植物分类...</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 el-img p-2 star">
+                        <img src="../img/20171016151752749.jpg" />
+                        <p class="pl-1 slsc-1">红花</p>
+                        <p>红花，（拉丁学名：Carthamus t...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--三楼-->
+        <!--美食专题-->
+        <div class="h-50 m-4">
+            <span class="jpcp-1">美食专题 </span>
+            <span class="jpcp-2"> 尽享天下美食，体味百味人生</span>
+        </div>
+        <!--下方轮播图-->
+        <div class="lbt-2">
+            <div class="row" id="lb2">
+                <!--轮播图-->
+                <!--第一组-->
+                <div class="col-1 star lbt-2-div" onclick='zaocan()'>
+                    <img src="../img/20170828160653642.jpg" />
+                    <p class="pl-1 slsc-1">早饭怎么吃才最好</p>
+                    <p>如今人们的饮食已经越来越向健康靠拢，而且一日之计在于晨，早餐的重要性无需赘言。而健康早餐所要具备的条件就是要有优质的蛋白质，较全面的碳水化合物以及矿物质。美好的早餐开启元气满满的一天！</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170828162529527.jpg" />
+                    <p class="pl-1 slsc-1">食疗食补</p>
+                    <p>民以食为天，明代养生学家高濂说：饮食，是维持人体生命活动的根本条件。一语道出“食”的重要性。人的身体之中，阴阳得以运用，五行得以相生，各个系统、器官得以发挥正常的功能，无不由于摄入饮食而获得动力。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170917101621680.jpg" />
+                    <p class="pl-1 slsc-1">甜品爱好者必看的食谱</p>
+                    <p>中国食物中的甜食，花样之多，食法之讲究，在世界上，恐怕称得是数一数二的了。外国人弄甜食，大抵不外是布甸，或者是奶油、鸡蛋之类的糕点，但在中国每个地方却有不同的特色，除了糖果糕饼之外，还有各式各样的甜羹。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170904195316819.jpg" />
+                    <p class="pl-1 slsc-1">夏天来点好喝的</p>
+                    <p>柠檬水是一种以柠檬调味的水饮料，起源于17世纪的法国巴黎。部份柠檬水饮料加入了二氧化碳制成汽水，最著名的品牌是雪碧和七喜。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170916153850404.jpg" />
+                    <p class="pl-1 slsc-1">无辣不欢？看这里！</p>
+                    <p>辣椒营养丰富，有许多保健作用。首先，辣椒中的维生素种类和含量异常丰富。小小一颗辣椒中，维生素A、B族维生素、维生素C、维生素E、维生素K、胡萝卜素、叶酸等维生素全都包括了。其次，辣椒中还含有钙和铁等矿物质以及膳食纤维。经总结，吃辣椒的好处共有以下10大好处。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170916132223464.jpg" />
+                    <p class="pl-1 slsc-1">有钳任性？金秋螃蟹季来了</p>
+                    <p>秋季吃螃蟹有什么好处？秋季是河蟹大量供应的季节，河蟹味美，营养丰富，含有大量蛋白质及钙、锌，还含有较多的铁、维生素等。螃蟹肉质细嫩，味道鲜美，是人们喜食佳品。</p>
+                </div>
+
+                    <!--第二组-->
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170828160653642.jpg" />
+                    <p class="pl-1 slsc-1">早饭怎么吃才最好</p>
+                    <p>如今人们的饮食已经越来越向健康靠拢，而且一日之计在于晨，早餐的重要性无需赘言。而健康早餐所要具备的条件就是要有优质的蛋白质，较全面的碳水化合物以及矿物质。美好的早餐开启元气满满的一天！</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170828162529527.jpg" />
+                    <p class="pl-1 slsc-1">食疗食补</p>
+                    <p>民以食为天，明代养生学家高濂说：饮食，是维持人体生命活动的根本条件。一语道出“食”的重要性。人的身体之中，阴阳得以运用，五行得以相生，各个系统、器官得以发挥正常的功能，无不由于摄入饮食而获得动力。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170917101621680.jpg" />
+                    <p class="pl-1 slsc-1">甜品爱好者必看的食谱</p>
+                    <p>中国食物中的甜食，花样之多，食法之讲究，在世界上，恐怕称得是数一数二的了。外国人弄甜食，大抵不外是布甸，或者是奶油、鸡蛋之类的糕点，但在中国每个地方却有不同的特色，除了糖果糕饼之外，还有各式各样的甜羹。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170904195316819.jpg" />
+                    <p class="pl-1 slsc-1">夏天来点好喝的</p>
+                    <p>柠檬水是一种以柠檬调味的水饮料，起源于17世纪的法国巴黎。部份柠檬水饮料加入了二氧化碳制成汽水，最著名的品牌是雪碧和七喜。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170916153850404.jpg" />
+                    <p class="pl-1 slsc-1">无辣不欢？看这里！</p>
+                    <p>辣椒营养丰富，有许多保健作用。首先，辣椒中的维生素种类和含量异常丰富。小小一颗辣椒中，维生素A、B族维生素、维生素C、维生素E、维生素K、胡萝卜素、叶酸等维生素全都包括了。其次，辣椒中还含有钙和铁等矿物质以及膳食纤维。经总结，吃辣椒的好处共有以下10大好处。</p>
+                </div>
+                <div class="col-1 star lbt-2-div" >
+                    <img src="../img/20170916132223464.jpg" />
+                    <p class="pl-1 slsc-1">有钳任性？金秋螃蟹季来了</p>
+                    <p>秋季吃螃蟹有什么好处？秋季是河蟹大量供应的季节，河蟹味美，营养丰富，含有大量蛋白质及钙、锌，还含有较多的铁、维生素等。螃蟹肉质细嫩，味道鲜美，是人们喜食佳品。</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!--底部-->
+    <div class="sb">
+        <span class="f-s">友情链接&nbsp;：</span>
+        <span>四川政府采购&nbsp;&nbsp;&nbsp;苏州车管所&nbsp;&nbsp;&nbsp;辽宁造价信息网&nbsp;&nbsp;&nbsp;南京教育信息网&nbsp;&nbsp;&nbsp;中国站长网&nbsp;&nbsp;&nbsp;南京市卫生局&nbsp;&nbsp;&nbsp;大达物流&nbsp;&nbsp;&nbsp;99770漫画</span>
+        <p>
+            <a href="*">关于美食行&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">服务条款&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">加入我们&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">商家合作&nbsp;&nbsp;&nbsp;</a>
+            <a href="*">注册会员&nbsp;&nbsp;&nbsp;</a>
+        </p>
+    </div>
+
+    <!--更底部-->
+    <div class="xb">
+        Copyright 2010-2017 All Rights Reserved.&nbsp;&nbsp;&nbsp;辽ICP备11005707号-1
+    </div>
+    <script>
+        //商品数据 本月
+        function show(){
+            //1.创建xhr异步对象
+            var xhr=new XMLHttpRequest();
+            //4.监听端口
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    //得到结果是json字符串格式
+                    var result=xhr.responseText;
+                    //将json字符串格式转化为数组
+                    var result=JSON.parse(result)
+                    //创建空数组保存符合条件的对象
+                    //保存本月循环数据
+                    var arr=[];
+                    //保存本周循环数据
+                    var arrbz=[];
+                    //保存今日循环数据
+                    var arrjr=[];
+
+                    //本月循环数据
+                    //循环得到数据库中数据
+                    for(var i=0,j=0;i<result.length;i++){
+                        console.log(result[i].fscore_a)
+                        //判断是否符合条件
+                        if(result[i].fscore_a==1){
+                            //符合条件的拼接入arr数组中
+                            arr=arr.concat(result[i])
+                            
+                            //星号循环
+
+                            if(arr[j].star==0){
+                                //本月拼接
+                                jpcpby.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arr[j].fid}"><img src="../img/${arr[j].fimg}"/></a>
+                                    <p class="pl-1">${arr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arr[j].star==1){
+                                //本月拼接
+                                jpcpby.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arr[j].fid}"><img src="../img/${arr[j].fimg}" /></a>
+                                    <p class="pl-1">${arr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arr[j].star==2){
+                                //本月拼接
+                                jpcpby.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arr[j].fid}"><img src="../img/${arr[j].fimg}" /></a>
+                                    <p class="pl-1">${arr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arr[j].star==3){
+                               //本月拼接
+                               jpcpby.innerHTML+=`
+                               <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                   <a href="http://127.0.0.1:8080/spxq.html?id=${arr[j].fid}"><img src="../img/${arr[j].fimg}" /></a>
+                                   <p class="pl-1">${arr[j].ftitle}</p>
+                                   <!--文字下的图片-->
+                                   <div class="pl-1">
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-off.png" alt=""/>
+                                       <img src="../img/star-off.png" alt=""/>
+                                       <span class="float-right pr-1 color">0人收藏</span>
+                                   </div>
+                               </div>
+                               `
+                            }else if(arr[j].star==4){
+                                //本月拼接
+                                jpcpby.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arr[j].fid}"><img src="../img/${arr[j].fimg}" /></a>
+                                    <p class="pl-1">${arr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arr[j].star==5){
+                                //本月拼接
+                                jpcpby.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arr[j].fid}"><img src="../img/${arr[j].fimg}" /></a>
+                                    <p class="pl-1">${arr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }
+
+                            j++;
+                        }else if(result[i].fscore_a==0){
+                            //跳过本次，继续执行下面的
+                            continue;
+                        }
+                    }
+
+                    //本周循环数据
+
+                    for(var i=0,j=0;i<result.length;i++){
+                        //判断是否符合条件
+                        if(result[i].fscore_b==1){
+                            //符合条件的拼接入arrbz数组中
+                            arrbz=arrbz.concat(result[i]);
+                            
+                            //星号循环
+                            
+                            if(arrbz[j].star==0){
+                                //本周拼接
+                                jpcpbz.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrbz[j].fid}"><img src="../img/${arrbz[j].fimg}" /></a>
+                                    <p class="pl-1">${arrbz[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrbz[j].star==1){
+                                //本周拼接
+                                jpcpbz.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrbz[j].fid}"><img src="../img/${arrbz[j].fimg}" /></a>
+                                    <p class="pl-1">${arrbz[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrbz[j].star==2){
+                                //本周拼接
+                                jpcpbz.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrbz[j].fid}"><img src="../img/${arrbz[j].fimg}" /></a>
+                                    <p class="pl-1">${arrbz[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrbz[j].star==3){
+                               //本周拼接
+                               jpcpbz.innerHTML+=`
+                               <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                   <a href="http://127.0.0.1:8080/spxq.html?id=${arrbz[j].fid}"><img src="../img/${arrbz[j].fimg}" /></a>
+                                   <p class="pl-1">${arrbz[j].ftitle}</p>
+                                   <!--文字下的图片-->
+                                   <div class="pl-1">
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-off.png" alt=""/>
+                                       <img src="../img/star-off.png" alt=""/>
+                                       <span class="float-right pr-1 color">0人收藏</span>
+                                   </div>
+                               </div>
+                               `
+                            }else if(arrbz[j].star==4){
+                                //本周拼接
+                                jpcpbz.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrbz[j].fid}"><img src="../img/${arrbz[j].fimg}" /></a>
+                                    <p class="pl-1">${arrbz[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrbz[j].star==5){
+                                //本周拼接
+                                jpcpbz.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrbz[j].fid}"><img src="../img/${arrbz[j].fimg}" /></a>
+                                    <p class="pl-1">${arrbz[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }
+
+                            j++
+                        }else if(result[i].fscore_b==0){
+                            //跳过本次，继续执行下面的
+                            continue;
+                        }
+                    }
+
+                    //今日循环数据
+
+                    for(var i=0,j=0;i<result.length;i++){
+                        //判断是否符合条件
+                        if(result[i].fscore_c==1){
+                            //符合条件的拼接入arrbz数组中
+                            arrjr=arrjr.concat(result[i]);
+                            
+                            //星号循环
+                            
+                            if(arrjr[j].star==0){
+                                //今日拼接
+                                jpcpjr.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrjr[j].fid}"><img src="../img/${arrjr[j].fimg}" /></a>
+                                    <p class="pl-1">${arrjr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrjr[j].star==1){
+                                //今日拼接
+                                jpcpjr.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrjr[j].fid}"><img src="../img/${arrjr[j].fimg}" /></a>
+                                    <p class="pl-1">${arrjr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrjr[j].star==2){
+                                //今日拼接
+                                jpcpjr.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrjr[j].fid}"><img src="../img/${arrjr[j].fimg}" /></a>
+                                    <p class="pl-1">${arrjr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrjr[j].star==3){
+                               //今日拼接
+                               jpcpjr.innerHTML+=`
+                               <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                   <a href="http://127.0.0.1:8080/spxq.html?id=${arrjr[j].fid}"><img src="../img/${arrjr[j].fimg}" /></a>
+                                   <p class="pl-1">${arrjr[j].ftitle}</p>
+                                   <!--文字下的图片-->
+                                   <div class="pl-1">
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-on.png" alt=""/>
+                                       <img src="../img/star-off.png" alt=""/>
+                                       <img src="../img/star-off.png" alt=""/>
+                                       <span class="float-right pr-1 color">0人收藏</span>
+                                   </div>
+                               </div>
+                               `
+                            }else if(arrjr[j].star==4){
+                                //今日拼接
+                                jpcpjr.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrjr[j].fid}"><img src="../img/${arrjr[j].fimg}" /></a>
+                                    <p class="pl-1">${arrjr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }else if(arrjr[j].star==5){
+                                //今日拼接
+                                jpcpjr.innerHTML+=`
+                                <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+                                    <a href="http://127.0.0.1:8080/spxq.html?id=${arrjr[j].fid}"><img src="../img/${arrjr[j].fimg}" /></a>
+                                    <p class="pl-1">${arrjr[j].ftitle}</p>
+                                    <!--文字下的图片-->
+                                    <div class="pl-1">
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-on.png" alt=""/>
+                                        <img src="../img/star-off.png" alt=""/>
+                                        <span class="float-right pr-1 color">0人收藏</span>
+                                    </div>
+                                </div>
+                                `
+                            }
+
+                            j++
+                        }else if(result[i].fscore_c==0){
+                            //跳过本次，继续执行下面的
+                            continue;
+                        }
+                    }
+                }
+            }
+            //2.打开链接
+            xhr.open("get","http://127.0.0.1:8080/product",true)
+            //3.发送请求
+            xhr.send(null)
+        };
+        function zaocan(){
+            //创建xhr异步对象
+            var xhr=XMLHttpRequest();
+            //监听
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    
+                }
+            }
+        }
+        //轮播图
+        let lb2 = document.getElementById("lb2");
+        let div = lb2.children;
+        let width=lb2.offsetWidth/2;
+        lb2.style.marginLeft = '0px';
+        setInterval(function () {
+            let num = (Number(lb2.style.marginLeft.slice(0, -2)) - 1)%width;
+            lb2.style.marginLeft = num + 'px';
+        },10);
+    </script>
+</body>
+</html>
