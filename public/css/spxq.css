@@ -1,0 +1,138 @@
+/*修改总的样式调整内外边距*/
+*{
+    margin: 0;
+    padding: 0;
+}
+/* 顶部样式 */
+.db{
+    width: 100%;
+    background-color:#F3F3F3;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 3%;
+}
+.db>span{
+
+    font-size: 16px;
+    color: #919191;
+
+}
+a{
+    text-decoration: none;
+    color: #919191;
+}
+.pad-l{
+    padding-left: 15%;
+}
+.pad-r{
+    padding-right: 15%;
+}
+
+/*搜索框*/
+.ssk{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+
+}
+
+.hmxl{
+    padding:5px 10px;
+}
+
+/* 商品详情页标题 */
+.title{
+    font-size:22px;
+    margin-bottom:15px;
+    margin-top: 7%;
+}
+
+/* 商品详情页难度图片 */
+.img-star{
+    margin-bottom: 5%;
+}
+
+/* 背景颜色 */
+.bg{
+    background-color: #f5f5f5;
+    margin-bottom: 5%;
+}
+
+body{
+    background-color: #fff;
+}
+
+.zl{
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+}
+
+.zl_1{
+    font-size: 24px;
+}
+/* 主料明细 调料明细加边框 */
+.table_1{
+    border-bottom: 1px solid #ccc;
+}
+
+/* 数字颜色 */
+.num{
+    font-size: 30px;
+    font-weight: bold;
+    color: #eb0d0d;
+    margin-top: 4%;
+    margin-bottom: 1%
+}
+
+/* 数字下文字的颜色 */
+.text{
+    color: #666;
+    font-size: 18px;
+}
+
+/* 底部 */
+.sb{
+    width: 100%;
+    text-align: center;
+    padding: 3%;
+    margin-top: 5%;
+    background-color:#F3F3F3;
+    color: #2D2D2D;
+    font-size: 15px;
+
+}
+
+
+.f-s{
+    font-size: 16px;
+}
+.f-s+span{
+    font-size: 15px;
+}
+
+/* 更底部 */
+.xb{
+    width: 100%;
+    padding: 1%;
+    background-color:#DDDDDD;
+    color: #B7ADAD;
+    text-align: center;
+
+}
+
+/* 固定上方图片高度 */
+#img_top>img{
+    width: 100%;
+    height: 300px;
+}
+
+/* 烹饪时间颜色 */
+.color-time{
+    color: #eb0d0d
+}
+
+/* 固定下方图片大小 */
+.img_bottom>img{
+    width: 218px;
+    height: 163px;
+}

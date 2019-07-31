@@ -58,7 +58,7 @@
 
         /*顶部登录注册*/
         .ding a{
-            color: #FFC107;
+            color: #eb0d0d;
             text-decoration: none;
         }
 
@@ -100,28 +100,27 @@
     <div class="container">
         <!--最外层div-->
         <p class="float-right mt-5 ding">
-            <a href="">没有账号?</a>
-            <a href="">点此登录</a>
+            <a href="">已有账号?</a>
+            <a href="./denglu.html">点此登录</a>
         </p>
         <div class="row" id="fa">
 
             <!--左侧图片-->
             <div class="col-lg-6 col-sm-12 img">
-                <img src="img/login-bg.png" alt=""/>
+                <img src="img/beijing.jpg" alt=""/>
             </div>
 
             <!--右侧为文字-->
             <div class="col-lg-6 col-sm-12 text">
                 <p class="top">美食网</p>
-								<form action="/zhuce" method="get">
-									<div class="row">
+					<div class="row">
 									
-										<!--账号-->
+					<!--账号-->
                     <div class="col-4">
                         <p class="float-right">账号</p>
                     </div>
                     <div class="col-8">
-                        <input onblur="show()" id="uname" onfocus="uname_f()" type="text" class="w-100" placeholder="请输入账号" name="fname"/>
+                        <input onblur="show1()" onfocus="uname_f()" id="fname" type="text" class="w-100" placeholder="请输入账号"/>
                         <p id="p1" class="m-0"></p>
                     </div>
 
@@ -130,8 +129,8 @@
                         <p class="float-right">密码</p>
                     </div>
                     <div class="col-8">
-                        <input type="text" class="w-100"  name="fpwd" placeholder="请输入密码"/>
-                        <p id="p3" class="m-0"></p>
+                        <input type="text" class="w-100" id="fpwd" placeholder="请输入密码" onblur="show2()" onfocus="upwd1_f()" />
+                        <p id="p2" class="m-0"></p>
                     </div>
 
                     <!--确认密码-->
@@ -139,8 +138,8 @@
                         <p class="float-right">确认密码</p>
                     </div>
                     <div class="col-8">
-                        <input type="text" class="w-100" placeholder="请确认密码"/>
-                        <p id="p4" class="m-0"></p>
+                        <input type="text" class="w-100" id="fpwd2" placeholder="请确认密码" onblur="show3()" onfocus="upwd2_f()" />
+                        <p id="p3" class="m-0"></p>
                     </div>
 
                     <!--手机号-->
@@ -148,19 +147,18 @@
                         <p class="float-right">手机号</p>
                     </div>
                     <div class="col-8">
-                        <input type="text" class="w-100" name="phone" placeholder="请输入手机号码"/>
-                        <p id="p5" class="m-0"></p>
+                        <input type="text" class="w-100" id="phone" placeholder="请输入手机号码" onblur="show4()"/>
+                        <p id="p4" class="m-0"></p>
                     </div>
 
                     <!--登录-->
                     <div class="col-4"></div>
                     <div class="col-8">
 											<!-- <input type="submit"> -->
-                        <button class="btn btn-warning w-100">注册</button>
+                        <button class="btn btn-danger w-100" onclick="zhuce()">注册</button>
                     </div>
 									
-									</div>
-								</form>
+				</div>
             </div>
 
             <!--最下方-->
@@ -170,17 +168,93 @@
         </div>
     </div>
     <script>
-        function show(){
+        function zhuce(){
+            //接收数据
+            var $fname=fname.value
+            var $fpwd=fpwd.value
+            var $fpwd2=fpwd2.value
+            var $phone=phone.value
+            //1.创建小黄人异步对象
+            var xhr=new XMLHttpRequest();
+            console.log(xhr)
+            //4.监听
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var result=xhr.responseText;
+                    console.log(result)
+                    
+                    if(result=="注册成功"){
+                        alert("注册成功，1秒后跳转到登录界面")
+                        var timer=setTimeout(function(){
+                        location.href='http://127.0.0.1:8080/denglu.html'
+                        },1000)
+                    }else if(result!="注册成功"){
+                        alert(result)
+                    }
+                }
+            }
+            //2.打开链接
+            xhr.open("post",`http://127.0.0.1:8080/zhuce`,true)
+            var formdata=`fname=${$fname}&fpwd=${$fpwd}&fpwd2=${$fpwd2}&phone=${$phone}`
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+            //3.发送请求
+            xhr.send(formdata)
+        }
+
+        // 用户名
+        function show1(){
             //非空验证
-            if(uname.value==""){
+            if(!fname.value){
                 p1.innerHTML="您输入的用户名为空";
+            }else if(fname.value.length<=6||fname.value.length>=12){
+                p1.innerHTML="用户名不正确";
             }else{
-                p1.innerHTML="";
+                p1.innerHTML="通过"
             }
         }
         function uname_f(){
             //显示输入条件
             p1.innerHTML="用户为6~12位数字和字母组成";
+        }
+
+        //密码
+        function show2(){
+            //非空验证
+            if(!fpwd.value){
+                p2.innerHTML="您输入的密码为空";
+            }else if(fpwd.value.length<=6||fpwd.value.length>=12){
+                p2.innerHTML="密码不正确";
+            }else{
+                p2.innerHTML="通过"
+            }
+        }
+        function upwd1_f(){
+            //显示输入条件
+            p2.innerHTML="密码为6~12位数字和字母组成";
+        }
+
+        //再次输入密码
+        function show3(){
+            //非空验证
+            if(fpwd2.value!=fpwd.value){
+                p3.innerHTML="两次密码不一致"
+            }else{
+                p3.innerHTML="通过"
+            }
+        }
+        function upwd2_f(){
+            //显示输入条件
+            p3.innerHTML="请再次确认密码";
+        }
+
+        //手机号
+        function show4(){
+            //非空验证
+            if(phone.value.length!=11){
+                p4.innerHTML="请输入正确的手机号";
+            }else{
+                p4.innerHTML="通过"
+            }
         }
     </script>
 </body>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 设置视口-->
+    <meta neme="viewport" content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <!-- 导入3个js-->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        /* 顶部样式 */
+    .db{
+        width: 100%;
+        background-color:#F3F3F3;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 3%;
+    }
+    .db>span{
+
+        font-size: 16px;
+        color: #919191;
+
+    }
+    a{
+        text-decoration: none;
+        color: #919191;
+    }
+    .pad-l{
+        padding-left: 15%;
+    }
+    .pad-r{
+        padding-right: 15%;
+    }
+
+    /*搜索框*/
+    .ssk{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5%;
+
+    }
+
+    .hmxl{
+        padding:5px 10px;
+    }
+    /*顶部图片*/
+    .top_img{
+        width: 100%;
+        height: 362px;
+    }
+
+    /*div外部边框*/
+    .w_border{
+        width: 100%;
+        border: 1px solid #ccc;
+        text-align: center;
+        height:300px;
+        margin-left: 1%;
+        margin-top: 4%;
+    }
+
+    /*div内部边框*/
+    .n_border{
+        width: 100%;
+        margin-left: -1%;
+        margin-top: 1%;
+        border: 1px solid #ccc;
+        text-align: center;
+        height:300px;
+        padding: 5%;
+    }
+
+    /*div内部图片*/
+    .n_border>img{
+        width: 58px;
+        height: 58px;
+        margin-bottom: 4%;
+    }
+
+    /*div内部文字*/
+    .n_border>p{
+        font-size: 18px;
+    }
+    /*标题*/
+    .title{
+        margin-top: 7%;
+        width: 100%;
+        text-align: center;
+        font-size:30px;
+        margin-bottom: 7%;
+    }
+
+    /*下方商品*/
+    .star{
+        width: 100%;
+        height: 100%;
+    
+    }
+    .star:hover{
+        transition:box-shadow 0.3s linear 0s;
+        box-shadow:3px 3px 10px #aaa;
+    }
+    
+    
+    .star>img{
+        width: 20%;
+        height: 10px;
+    }
+    
+    /*一楼图片样式*/
+    .yl-img{
+        width: 100%;
+        clear: both;
+    }
+    .yl-img>a>img{
+        width:100%;
+        height: 253px;
+    }
+
+    /*底部图片文字*/
+    .bottom_imgtext{
+        width: 100%;
+        text-align: center;
+        margin-top: 7%;
+    }
+    .bottom_imgtext>p{
+        font-size: 20px;
+        font-family: "方正舒体"
+    }
+        /* 底部 */
+    .sb{
+        width: 100%;
+        text-align: center;
+        padding: 3%;
+        margin-top: 5%;
+        background-color:#F3F3F3;
+        color: #2D2D2D;
+        font-size: 15px;
+
+    }
+
+
+    .f-s{
+        font-size: 16px;
+    }
+    .f-s+span{
+        font-size: 15px;
+    }
+
+    /* 更底部 */
+    .xb{
+        width: 100%;
+        padding: 1%;
+        background-color:#DDDDDD;
+        color: #B7ADAD;
+        text-align: center;
+
+    }
+
+
+    </style>
+</head>
+<body>
+    <!-- 头 -->
+    <div class="db">
+        <span class="pad-l">加入美食行，分享你的菜谱</span>
+        <span class="float-right pad-r">
+            <a href="./zhuce.html">注册</a>
+        </span>
+        <span class="float-right pl-1 pr-1">|</span>
+        <span class="float-right">
+            <a href="./denglu.html">登录</a>
+        </span>
+    </div>
+<div class="container">
+    <!--搜索框 和 logo-->
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="ssk float-left col-9">
+
+            <!--前方下拉菜单-->
+            <select name="provs" class="hmxl float-left">
+                <option  selected>菜谱</option><!--0-->
+                <option>专题</option><!--1-->
+                <option>圈子</option>
+                <option>活动</option>
+            </select>
+            <!--输入框-->
+
+            <input type="text" placeholder="请输入您要搜索的内容" class="float-left ml-0 w-50 form-control p-1 my_small input" />
+            <!--搜索图片-->
+
+            <a href="#" class="ml-0 float-left">
+                <img src="../img/search.png"/>
+            </a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- 顶部图片 -->
+        <div class="w-100">
+            <img src="img/shiliao_1.jpg" class="top_img">
+        </div>
+
+        <div class="w_border">
+            
+            <div class=n_border>
+                <img src="img/shiliao_2.jpg" alt="">
+                <p>
+                    民以食为天，明代养生学家高濂说：饮食，是维持人体生命活动的根本条件。一语道出“食”的重要性。人的身体之中，阴阳得以运用，五行得以相生，各个系统、器官得以发挥正常的功能，无不由于摄入饮食而获得动力。
+                </p>
+            </div>
+        </div>
+        <div class="title">
+            <img src="img/title_icon_l.png">
+            <span>食疗食补</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+            <a href="http://127.0.0.1:8080/spxq.html?id=7"><img src="../img/7.jpg" /></a>
+            <p class="pl-1">糖醋排骨</p>
+            <!--文字下的图片-->
+            <div class="pl-1">
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-off.png" alt=""/>
+                <span class="float-right pr-1 color">0人收藏</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+            <a href="http://127.0.0.1:8080/spxq.html?id=2"><img src="../img/2.jpg" /></a>
+            <p class="pl-1">美味的红烧肉</p>
+            <!--文字下的图片-->
+            <div class="pl-1">
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-off.png" alt=""/>
+                <img src="../img/star-off.png" alt=""/>
+                <img src="../img/star-off.png" alt=""/>
+                <span class="float-right pr-1 color">0人收藏</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 yl-img p-2 star">
+            <a href="http://127.0.0.1:8080/spxq.html?id=6"><img src="../img/6.jpg" /></a>
+            <p class="pl-1">懒人版糖醋排骨</p>
+            <!--文字下的图片-->
+            <div class="pl-1">
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-on.png" alt=""/>
+                <img src="../img/star-off.png" alt=""/>
+                <span class="float-right pr-1 color">0人收藏</span>
+            </div>
+        </div>
+       
+    </div>
+    <div class="bottom_imgtext">
+        <img src="img/bottom.png" alt="">
+        <p>烹饪即感受生活</p>
+        <p>烹饪的油盐酱醋，即生活的酸甜苦辣</p>
+    </div>
+</div>
+<!--底部-->
+<div class="sb">
+    <span class="f-s">友情链接&nbsp;：</span>
+    <span>四川政府采购&nbsp;&nbsp;&nbsp;苏州车管所&nbsp;&nbsp;&nbsp;辽宁造价信息网&nbsp;&nbsp;&nbsp;南京教育信息网&nbsp;&nbsp;&nbsp;中国站长网&nbsp;&nbsp;&nbsp;南京市卫生局&nbsp;&nbsp;&nbsp;大达物流&nbsp;&nbsp;&nbsp;99770漫画</span>
+    <p>
+        <a href="*">关于美食行&nbsp;&nbsp;&nbsp;</a>
+        <a href="*">服务条款&nbsp;&nbsp;&nbsp;</a>
+        <a href="*">加入我们&nbsp;&nbsp;&nbsp;</a>
+        <a href="*">商家合作&nbsp;&nbsp;&nbsp;</a>
+        <a href="*">注册会员&nbsp;&nbsp;&nbsp;</a>
+    </p>
+</div>
+
+<!--更底部-->
+<div class="xb">
+    Copyright 2010-2017 All Rights Reserved.&nbsp;&nbsp;&nbsp;辽ICP备11005707号-1
+</div>
+</body>
+</html>

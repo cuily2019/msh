@@ -35,7 +35,7 @@
 
             }
         }
-
+        
         @media screen and (max-width:991px){
             #fa{
                 width: 100%;
@@ -58,7 +58,7 @@
 
         /*顶部登录注册*/
         .ding a{
-            color: #FFC107;
+            color: #eb0d0d;
             text-decoration: none;
         }
 
@@ -101,42 +101,39 @@
         <!--最外层div-->
         <p class="float-right mt-5 ding">
             <a href="">没有账号?</a>
-            <a href="">点此注册</a>
+            <a href="./zhuce.html">点此注册</a>
         </p>
         <div class="row" id="fa">
 
             <!--左侧图片-->
             <div class="col-lg-6 col-sm-12 img">
-                <img src="img/login-bg.png" alt=""/>
+                <img src="img/beijing.jpg" alt=""/>
             </div>
 
             <!--右侧为文字-->
             <div class="col-lg-6 col-sm-12 text">
                 <p class="top">美食网</p>
-								<form action="/denglu" method="get">
-									<div class="row">
-										<!--账号-->
-										<div class="col-3"></div>
+				  <div class="row">
+					<!--账号-->
+					<div class="col-3"></div>
                     <div class="col-9">
-                        <input onblur="show()" id="uname" onfocus="uname_f()" type="text" class="w-100" placeholder="登录账号" name="fname"/>
+                        <input onblur="show()" id="fname" onfocus="fname_f()" type="text" class="w-100" placeholder="登录账号"/>
                         <p id="p1" class="m-0"></p>
                     </div>
 
                     <!--密码-->
-										<div class="col-3"></div>
+					<div class="col-3"></div>
                     <div class="col-9">
-                        <input type="text" class="w-100"  name="fpwd" placeholder="请输入密码"/>
-                        <p id="p3" class="m-0"></p>
+                        <input type="text" class="w-100"  id="fpwd" onblur="show1()" onfocus="fpwd_f()" placeholder="请输入密码"/>
+                        <p id="p2" class="m-0"></p>
                     </div>
                     <!--登录-->
                     <div class="col-3"></div>
                     <div class="col-9">
-											<!-- <input type="submit"> -->
-                        <button class="btn btn-warning w-100" >登录</button>
-                    </div>
-									
-									</div>
-								</form>
+					<!-- <input type="submit"> -->
+                    <button class="btn btn-danger w-100" onclick="denglu()">登录</button>
+                  </div>			
+				</div>
             </div>
 
             <!--最下方-->
@@ -146,17 +143,57 @@
         </div>
     </div>
     <script>
+        function denglu(){
+            //获取数据
+            var $fname=fname.value
+            var $fpwd=fpwd.value
+            //1.创建xhr异步对象
+            var xhr=new XMLHttpRequest();
+            //4.监听
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var result=xhr.responseText;
+                    console.log(result)
+                    if(result=="登陆成功"){
+                        alert("登陆成功，1秒后跳转到首页")
+                        var timer=setTimeout(function(){
+                            location.href='http://127.0.0.1:8080/shouye.html'
+                            },1000)
+                    }else{
+                        alert(result)
+                    }
+                }
+            }
+            //2.打开链接
+            xhr.open("post","http://127.0.0.1:8080/denglu",true)
+            var formdata="fname="+$fname+'&fpwd='+$fpwd
+            //3.发送请求
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+            xhr.send(formdata)
+        }
         function show(){
             //非空验证
-            if(uname.value==""){
+            if(fname.value==""){
                 p1.innerHTML="您输入的用户名为空";
             }else{
-                p1.innerHTML="";
+                p1.innerHTML="通过";
             }
         }
-        function uname_f(){
+        function fname_f(){
             //显示输入条件
             p1.innerHTML="用户为6~12位数字和字母组成";
+        }
+
+        function show1(){
+            if(fpwd.value==""){
+                p2.innerHTML="您输入的密码为空";
+            }else{
+                p2.innerHTML="通过";
+            }
+        }
+        function fpwd_f(){
+            //显示输入条件
+            p2.innerHTML="密码6~12位数字和字母组成";
         }
     </script>
 </body>

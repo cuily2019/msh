@@ -1,42 +1,70 @@
-﻿/*����header*/
-.my_header,.my_footer{
+﻿/* 头部样式 */
+.my_header{
     width:100%;
 }
-/*��дý���ѯ������iframe�ĸ߶�*/
+
+/*媒体查询 引入头部 大屏*/
 @media screen and (min-width:992px){
     .my_header{
         height: 5rem;
     }
-    .my_footer{
-        height:21rem;
-    }
+   
 }
+
+/* 媒体查询引入头部 中屏*/
 @media screen and (max-width:991px){
     .my_header{
         height: 5rem;
     }
-    .my_footer{
-        height:15rem;
-    }
+    
 }
+
+/* 媒体查询引入头部 小屏 */
 @media screen and (max-width:778px){
     .my_header{
         height: 5rem;
     }
-    .my_footer{
-        height:14rem;
-    }
+   
 }
-/*�ܵ���ʽȥ������߾�*/
+yl-img
+/*修改内外标距*/
 *{
     padding: 0;
     margin: 0;
 }
+
+
 *::before,
 *::after {
     box-sizing: content-box;
 }
-/*������*/
+
+/* 顶部样式 */
+.db{
+    width: 100%;
+    background-color:#F3F3F3;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 3%;
+}
+.db>span{
+
+    font-size: 16px;
+    color: #919191;
+
+}
+a{
+    text-decoration: none;
+    color: #919191;
+}
+.pad-l{
+    padding-left: 15%;
+}
+.pad-r{
+    padding-right: 15%;
+}
+
+/*搜索框*/
 .ssk{
     width: 100%;
     text-align: center;
@@ -47,21 +75,23 @@
 .hmxl{
     padding:5px 10px;
 }
-/*�۵�������*/
+
+/*轮播图上方导航栏*/
 .mar{
     margin:0 -7px;
 }
 
-/*��д�۵���������ʽ*/
+/*轮播图上方导航栏ʽ*/
 .bg-dark{
-    background-color:#F6A200 !important;
+    background-color:#eb0d0d !important;
 }
-/*���׵��۵�Ч��*/
+
+/*修改ul样式，去点*/
 ul{
     list-style-type: none !important;
 }
 .color-f{
-    color: #ffc107;
+    color: #eb0d0d;
     float: left;
     margin: 2% 5%;
     font-size: 16px;
@@ -80,13 +110,14 @@ ul{
     font-size: 14px;
 }
 
-/*����ҳ���С�����۵��۵�Ч��*/
+/*媒体查询修改屏幕大小*/
 @media screen and (min-width: 575px){
-    /*���Ϸ�����*/
+    /*二级菜单样式*/
     #xl,#xl2,#xl3{
         position: relative;
     }
-    /*��������Ҫ��������*/
+
+    /*二级菜单下的ul小分类*/
     #xl>ul{
         background-color:  #fff;
         display: none;
@@ -97,7 +128,8 @@ ul{
         z-index: 999;
         top: 40px;
     }
-    /*��������Ҫ��������*/
+
+    /*二级菜单下的ul小分类*/
     #xl2>ul,#xl3>ul{
         background-color:  #fff;
         width: 100px;
@@ -107,32 +139,36 @@ ul{
         z-index: 999;
         top: 40px;
     }
-    /*hover�ֺ���ʾ*/
+
+    /*鼠标悬停后的样式*/
     #xl:hover>ul,#xl2:hover>ul,#xl3:hover>ul{
         display: block;
     }
-    /*�����˵�������*/
+
+    /*二级菜单栏样式*/
     .sj{
         width: 0px;
         height: 0px;
-        border-left: 5px solid #F6A200;
-        border-right: 5px solid #F6A200;
-        border-top: 5px solid #FAD07F;
+        border-left: 5px solid #eb0d0d;
+        border-right: 5px solid #eb0d0d;
+        border-top: 5px solid #fa7f8a;
         margin-top: -26%;
         margin-left: 92%;
         margin-right: 8px;
         /*display: inline;*/
     }
+
     .pl{
         padding-left: 8px;
     }
 }
+
 @media screen and (max-width:575px){
-    /*���Ϸ�����*/
+    /*二级菜单样式*/
     #xl,#xl2,#xl3{
         position: relative;
     }
-    /*��������Ҫ��������*/
+    /*二级菜单下的ul小分类*/
     #xl>ul{
         background-color: #fff;
         display: none;
@@ -144,7 +180,8 @@ ul{
         left: 80px;
         top:0;
     }
-    /*hover�ֺ���ʾ*/
+
+    /*二级菜单下的ul小分类*/
     #xl2>ul,#xl3>ul{
         background-color: #fff;
         display: none;
@@ -156,7 +193,8 @@ ul{
         left: 80px;
         top:0;
     }
-    /*��������Ҫ��������*/
+    
+    /*鼠标悬停后的样式*/
     #xl:hover>ul,#xl2:hover>ul,#xl3:hover>ul{
         display: block;
     }
@@ -169,13 +207,13 @@ ul{
         padding-left: 0px;
     }
 }
-/*�ֲ�ͼͼƬ*/
+/*上方轮播图片*/
 .lb-img{
     width:100%;
     height:370px;
 }
 
-/*�ֲ�ͼ�����ʽ��д*/
+/*轮播指示符*/
 .carousel-indicators li{
     width: 15px;
     height: 15px;
@@ -185,9 +223,10 @@ ul{
     border-radius: 50%;
 }
 .carousel-indicators .active{
-    background-color:#F6A200;
+    background-color:#eb0d0d;
 }
-/*��д���Ҽ�ͷ����ʽ*/
+
+/*修改左右箭头样式*/
 .carousel-control-prev,.carousel-control-next{
     width: 4%;
     height:20%;
@@ -196,7 +235,8 @@ ul{
     border-radius: 0.25rem;
 
 }
-/*һ¥����*/
+
+/*一楼精品菜谱*/
 .jpcp-1{
     font-size: 24px;
     font-family: ����;
@@ -207,17 +247,20 @@ ul{
     font-family: ��������;
 }
 .jpcp-3{
-    float: right;
+    
     text-align: center;
     border-radius: 40%;
     display: inline !important;
+    float:right;
 }
-/*��д���ҵ�����ʽ*/
+
+/*修改胶囊导航样式ʽ*/
 .nav-link{
     color:#333;
 }
+/*修改胶囊导航样式ʽ*/
 .nav-link.active{
-    background-color:#F6A200 !important;
+    background-color:#eb0d0d !important;
 }
 .nav-pills,.nav-pills>li{
     display: inline !important;
@@ -226,10 +269,8 @@ ul{
     border-radius:1rem;
     padding: 3px 15px;
 }
-.jpcp-3{
 
-}
-/*ͼƬ�����������ʽ*/
+
 .star{
     width: 100%;
     height: 100%;
@@ -239,12 +280,14 @@ ul{
     transition:box-shadow 0.3s linear 0s;
     box-shadow:3px 3px 10px #aaa;
 }
-/*һ¥������ͼƬ*/
+
+
 .star>img{
     width: 20%;
     height: 10px;
 }
-/*һ¥��ͼƬ*/
+lbt-2-div
+/*一楼图片样式*/
 .yl-img{
     width: 100%;
     clear: both;
@@ -253,12 +296,16 @@ ul{
     width:100%;
     height: 253px;
 }
-/*��¥ͼƬ*/
+a{
+    text-decoration: none !important;
+}
+/*二楼图片样式*/
 .el-img>img{
     width: 100%;
     height: 100px;
 }
-/*��¥����*/
+
+/*时令蔬菜*/
 .slsc-1{
     font-size:18px;
     text-align: center;
@@ -268,9 +315,10 @@ ul{
     font-size: 14px;
     text-align: center;
 }
-/*��¥*/
-/*�ڶ����ֲ�ͼ*/
-/*������ɼ���100%*/
+
+
+/*下方轮播图*/
+/*最外层父元素*/
 .lbt-2{
     width:100%;
     height: 405px;
@@ -279,25 +327,29 @@ ul{
     overflow: hidden;
     /*justify-content:space-between;*/
 }
-/*���沿�ֲ��ɼ���200%*/
+
+/*下方轮播图 父元素*/
 #lb2{
     width: 400%;
     height: 405px;
     overflow: hidden;
     /*border: 1px solid red;*/
 }
-/*ÿһ�����ֲ�С��*/
+
+/*底部导航栏*/
 .lbt-2-div{
     width: 100%;
     height: 400px !important;
     /*border: 1px solid red;*/
 }
-/*�ֲ�С�������ͼƬ*/
-.lbt-2-div>img{
+
+/*底部导航栏图片*/
+.lbt-2-div>a>img{
     height: 230px;
     width: 100%;
 }
-/*��ҳ�ײ�*/
+
+/*底部*/
 .sb{
     width: 100%;
     text-align: center;
